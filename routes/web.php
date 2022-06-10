@@ -17,6 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Rotas Admin
+Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
+	Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+		Route::get('/', 'AdminController@index')->name('index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+        // Rotas de Oportunidades
+        Route::get('opportunitys', 'OpportunitysController@index')->name('opportunitys.index');
+		Route::get('opportunitys/create', 'OpportunitysController@create')->name('opportunitys.create');
+		Route::post('opportunitys/create', 'OpportunitysController@store')->name('opportunitys.store');
+		Route::get('opportunitys/{opportunity}/edit', 'OpportunitysController@edit')->name('opportunitys.edit');
+		Route::patch('opportunitys/update/{opportunity}', 'OpportunitysController@update')->name('opportunitys.update');
+		Route::delete('opportunitys/delete/{opportunity}', 'OpportunitysController@destroy')->name('opportunitys.destroy');
+	});
+});
+
+Auth::routes();
