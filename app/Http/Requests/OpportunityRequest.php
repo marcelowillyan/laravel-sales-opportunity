@@ -20,7 +20,8 @@ class OpportunityRequest extends FormRequest
         } else {
             return [
                 'title' => 'required|unique:opportunitys',
-                'type' => 'required|in:text,textarea,telefone,editor',
+                'price' => 'required',
+                'seller' => 'required',
             ];
         }
     }
@@ -28,10 +29,10 @@ class OpportunityRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'O título é obrigatório',
-            'title.unique'      => 'A oportunidade já existe..',
-            'type.required'     => 'É necessário informat o tipo do campo a ser criado.',
-            'type.in'     => 'Tipo não foi informado como esperado.',
+            'title.required'    => 'É necessário informar um cliente...',
+            'title.unique'    => 'Já existe uma oportunidade para este cliente...',
+            'price.required'     => 'É necessário informar o valor da oportunidade...',
+            'seller.required'     => 'É necessário informar um vendedor...',
         ];
     }
 }

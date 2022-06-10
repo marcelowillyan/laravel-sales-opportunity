@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Opportunity extends Model
 {
     protected $table = "opportunitys";
-    protected $fillable = ['title', 'slug', 'type', 'content'];
+    protected $fillable = ['title', 'slug', 'price', 'seller', 'status'];
 }

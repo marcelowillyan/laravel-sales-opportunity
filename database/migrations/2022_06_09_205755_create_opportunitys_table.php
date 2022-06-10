@@ -12,8 +12,9 @@ class CreateOpportunitysTable extends Migration
             $table->increments('id');
             $table->string('title')->unique();
             $table->string('slug')->inique();
-            $table->enum('type', ['text', 'textarea', 'telefone', 'editor']);
-            $table->text('content')->nullable();
+            $table->text('price')->nullable();
+            $table->text('seller')->nullable();
+            $table->enum('status', array('0','1','2'))->default('0');
             $table->timestamps();
         });
     }

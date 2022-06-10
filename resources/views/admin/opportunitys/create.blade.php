@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-
+@include('admin.partials.messages')
     <div class="card">
     	<div class="card-header d-flex align-items-center">
             <div class="mr-auto p-2">
@@ -16,14 +16,16 @@
             <form method="POST" action="{{ route('admin.opportunitys.store') }}">
                 {!! csrf_field() !!}
                 <div class="form-group">
-                    <label>Título: </label>
-                    <input type="text" placeholder="Título da Configuração" class="form-control" name="title" value="{{ old('title') }}">
+                    <label>Cliente: </label>
+                    <input type="text" placeholder="Nome do cliente" class="form-control" name="title" value="{{ old('title') }}">
                 </div>
                 <div class="form-group">
-                    <label>Tipo: </label>
-                    <select class="form-control" name="type">
-                        <option disabled selected>Selecione...</option>
-                    </select>
+                    <label>Preço: </label>
+                    <input type="text" placeholder="Valor da oportunidade" class="form-control price" name="price" value="{{ old('price') }}">
+                </div>
+                <div class="form-group">
+                    <label>Vendedor: </label>
+                    <input type="text" placeholder="Nome do vendedor" class="form-control" name="seller" value="{{ old('seller') }}">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Salvar</button>
@@ -31,4 +33,8 @@
             </form>
     	</div>
     </div>
+@stop
+
+@section('js')
+    <script src="/js/app.js"></script>
 @stop
